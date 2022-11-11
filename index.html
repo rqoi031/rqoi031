@@ -19,6 +19,8 @@
 		}
 		body
 		{
+			overflow-x: hidden;
+			overflow-y: hidden;
 			width: 100%;
 			height: 100%;
 			top: auto;
@@ -29,22 +31,28 @@
 		}
 		.main
 		{
-			margin: 15px;
+			margin-top: 15px;
+			margin-right: 15px;
+			margin-bottom: 15px;
+			margin-left: 15px;
+			background-color: rgba(255, 255, 255, 0.7);
 		}
 	</style>
 </head>
 
 <body>
-	<div id="header">
-		<h2>rqoi031</h2>
+	<div class="main">
+		<div id="header">
+			<h2>rqoi031</h2>
+		</div>
+		<h3>Hello</h3>
+		<span id="hello">0</span>
+		<button onclick="hello()">点击</button>
+		<h3>一些链接</h3>
+		<a href="https://codeforces.com" class="link">Codeforces</a><br/>
+		<a href="https://loj.ac" class="link">LibreOJ</a><br/>
+		<a href="http://www.luogu.com.cn" class="link">洛谷</a>
 	</div>
-	<h3>Hello</h3>
-	<span id="hello">0</span>
-	<button onclick="hello()">点击</button>
-	<h3>一些链接</h3>
-	<a href="https://codeforces.com" class="link">Codeforces</a><br/>
-	<a href="https://loj.ac" class="link">LibreOJ</a><br/>
-	<a href="http://www.luogu.com.cn" class="link">洛谷</a>
 </body>
 
 </html>
