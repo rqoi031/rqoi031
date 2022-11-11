@@ -11,6 +11,42 @@
 			++a;
 			document.getElementById("hello").innerHTML=a;
 		}
+		var sum=0;
+		var addsum=0;
+		var cost=0;
+		var cost2=0;
+		function add()
+		{
+			sum+=addsum;
+			updata();
+		}
+		function up()
+		{
+			if(sum>=cost)
+			{
+				sum-=cost;
+				++addsum;
+				cost+=addsum;
+				updata();
+			}
+		}
+		function up2()
+		{
+			if(sum>=cost2)
+			{
+				sum-=cost2;
+				addsum*=2;
+				cost2+=addsum*addsum;
+				updata();
+			}
+		}
+		function updata()
+		{
+			document.getElementById("sum").innerHTML=sum;
+			document.getElementById("add").innerHTML="+"+addsum;
+			document.getElementById("cost").innerHTML=cost;
+			document.getElementById("cost2").innerHTML=cost2;
+		}
 	</script>
 	<style>
 		html
@@ -51,7 +87,7 @@
 			margin-left: 15px;
 			background-color: rgba(255,255,255,0.5);
 		}
-		.hello
+		.button
 		{
 			background-color: white;
 			color: black;
@@ -59,13 +95,42 @@
 			border-radius: 4px;
 			font-size: 10px;
 		}
-		.hello:hover
+		.button:hover
 		{
 			background-color: #e7e7e7;
 		}
-		.hello:active
+		.button:active
 		{
 			background-color: #d7d7d7;
+			border: 2px solid #d7d7d7;
+		}
+		#upDown
+		{
+			display: none;
+			position: absolute;
+			background-color: #f9f9f9;
+			box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+			padding: 5px 7px;
+		}
+		#up
+		{}
+		#up:hover #upDown
+		{
+			display: block;
+		}
+		#upDown2
+		{
+			display: none;
+			position: absolute;
+			background-color: #f9f9f9;
+			box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+			padding: 5px 7px;
+		}
+		#up2
+		{}
+		#up2:hover #upDown2
+		{
+			display: block;
 		}
 	</style>
 </head>
@@ -77,13 +142,36 @@
 	<div class="main">
 		<h3>Hello</h3>
 		<span id="hello">0</span>
-		<button onclick="hello()" class="hello">点击</button>
+		<button onclick="hello()" class="button">点击</button>
 	</div>
 	<div class="main">
 		<h3>一些链接</h3>
 		<a href="https://codeforces.com" class="link">Codeforces</a><br/>
 		<a href="https://loj.ac" class="link">LibreOJ</a><br/>
 		<a href="http://www.luogu.com.cn" class="link">洛谷</a>
+	</div>
+	<div class="main">
+		<h3>小游戏</h3>
+		<span>sum:</span>
+		<span id="sum">0</span>
+		<button id="add" class="button" onclick="add()">+0</button>
+		<br/>
+		<span>upgrade:</span>
+		<br/>
+		<div id="up">
+			<button class="button" onclick="up()">+1</button>
+			<div id="upDown">
+				<span>need</span>
+				<span id="cost">0</span>
+			</div>
+		</div>
+		<div id="up2">
+			<button class="button" onclick="up2()">*2</button>
+			<div id="upDown2">
+				<span>need</span>
+				<span id="cost2">0</span>
+			</div>
+		</div>
 	</div>
 </body>
 
