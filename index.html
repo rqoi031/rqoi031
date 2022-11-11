@@ -12,17 +12,25 @@
 			document.getElementById("hello").innerHTML=a;
 		}
 	</script>
+	<style>
+		.link
+		{
+			text-decoration:none;
+		}
+	</style>
 </head>
 
 <body>
-	<h2>rqoi031</h2>
+	<div id="header">
+		<h2>rqoi031</h2>
+	</div>
 	<h3>Hello</h3>
 	<span id="hello">0</span>
 	<button onclick="hello()">点击</button>
 	<h3>一些链接</h3>
-	<a href="https://codeforces.com" style="text-decoration:none;">Codeforces</a><br/>
-	<a href="https://loj.ac" style="text-decoration:none;">LibreOJ</a><br/>
-	<a href="http://www.luogu.com.cn" style="text-decoration:none;">洛谷</a>
+	<a href="https://codeforces.com" class="link">Codeforces</a><br/>
+	<a href="https://loj.ac" class="link">LibreOJ</a><br/>
+	<a href="http://www.luogu.com.cn" class="link">洛谷</a>
 </body>
 
 </html>
