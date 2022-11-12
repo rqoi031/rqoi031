@@ -16,6 +16,8 @@
 		var cost=0;
 		var cost2=0;
 		var cost3=10000;
+		var costAuto=100;
+		var autoSum=0;
 		function add()
 		{
 			sum+=addsum;
@@ -26,7 +28,7 @@
 			if(sum>=cost)
 			{
 				sum-=cost;
-				++addsum;
+				addsum+=1;
 				cost+=addsum;
 				updata();
 			}
@@ -51,6 +53,16 @@
 				updata();
 			}
 		}
+		function auto()
+		{
+			if(sum>=costAuto)
+			{
+				sum-=costAuto;
+				autoSum+=1;
+				costAuto+=autoSum*10;
+				updata();
+			}
+		}
 		function updata()
 		{
 			document.getElementById("sum").innerHTML=sum;
@@ -58,7 +70,16 @@
 			document.getElementById("cost").innerHTML=cost;
 			document.getElementById("cost2").innerHTML=cost2;
 			document.getElementById("cost3").innerHTML=cost3;
+			document.getElementById("autoSum").innerHTML="(+"+autoSum+"/s)";
+			document.getElementById("costAuto").innerHTML=costAuto;
 		}
+		function autoAdd()
+		{
+			setTimeout(autoAdd,1000);
+			sum+=autoSum;
+			updata();
+		}
+		setTimeout(autoAdd,1000);
 	</script>
 	<style>
 		html
@@ -158,6 +179,20 @@
 		{
 			display: block;
 		}
+		#autoDown
+		{
+			display: none;
+			position: absolute;
+			background-color: #f9f9f9;
+			box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+			padding: 5px 7px;
+		}
+		#auto
+		{}
+		#auto:hover #autoDown
+		{
+			display: block;
+		}
 	</style>
 </head>
 
@@ -180,6 +215,7 @@
 		<h3>小游戏</h3>
 		<span>sum:</span>
 		<span id="sum">0</span>
+		<span id="autoSum">(+0/s)</span>
 		<button id="add" class="button" onclick="add()">+0</button>
 		<br/>
 		<span>upgrade:</span>
@@ -203,6 +239,15 @@
 			<div id="upDown3">
 				<span>need</span>
 				<span id="cost3">10000</span>
+			</div>
+		</div>
+		<span>automation:</span>
+		<br/>
+		<div id="auto">
+			<button class="button" onclick="auto()">+1/s</button>
+			<div id="autoDown">
+				<span>need</span>
+				<span id="costAuto">100</span>
 			</div>
 		</div>
 	</div>
