@@ -12,15 +12,16 @@
 			document.getElementById("hello").innerHTML=a;
 		}
 		var sum=0;
-		var addsum=0;
+		var addSum=0;
 		var cost=0;
 		var cost2=0;
 		var cost3=10000;
 		var costAuto=100;
+		var costAuto2=1000;
 		var autoSum=0;
 		function add()
 		{
-			sum+=addsum;
+			sum+=addSum;
 			updata();
 		}
 		function up()
@@ -28,8 +29,8 @@
 			if(sum>=cost)
 			{
 				sum-=cost;
-				addsum+=1;
-				cost+=addsum;
+				addSum+=1;
+				cost+=addSum;
 				updata();
 			}
 		}
@@ -38,8 +39,8 @@
 			if(sum>=cost2)
 			{
 				sum-=cost2;
-				addsum*=2;
-				cost2+=addsum*Math.floor(Math.sqrt(addsum));
+				addSum*=2;
+				cost2+=addSum*Math.floor(Math.sqrt(addSum));
 				updata();
 			}
 		}
@@ -48,8 +49,8 @@
 			if(sum>=cost3)
 			{
 				sum-=cost3;
-				addsum*=addsum;
-				cost3+=addsum*addsum;
+				addSum*=addSum;
+				cost3+=addSum*addSum;
 				updata();
 			}
 		}
@@ -63,15 +64,48 @@
 				updata();
 			}
 		}
+		function auto2()
+		{
+			if(sum>=costAuto*10)
+			{
+				sum-=costAuto*10;
+				autoSum+=10;
+				costAuto+=autoSum*5;
+				updata();
+			}
+		}
+		function auto3()
+		{
+			if(sum>=costAuto*100)
+			{
+				sum-=costAuto*100;
+				autoSum+=100;
+				costAuto+=autoSum*50;
+				updata();
+			}
+		}
+		function auto4()
+		{
+			if(sum>=costAuto2)
+			{
+				sum-=costAuto2;
+				autoSum*=2;
+				costAuto2+=autoSum*Math.floor(Math.sqrt(autoSum))*10;
+				updata();
+			}
+		}
 		function updata()
 		{
 			document.getElementById("sum").innerHTML=sum;
-			document.getElementById("add").innerHTML="+"+addsum;
+			document.getElementById("add").innerHTML="+"+addSum;
 			document.getElementById("cost").innerHTML=cost;
 			document.getElementById("cost2").innerHTML=cost2;
 			document.getElementById("cost3").innerHTML=cost3;
 			document.getElementById("autoSum").innerHTML="(+"+autoSum+"/s)";
 			document.getElementById("costAuto").innerHTML=costAuto;
+			document.getElementById("costAuto2").innerHTML=costAuto*10;
+			document.getElementById("costAuto3").innerHTML=costAuto*100;
+			document.getElementById("costAuto4").innerHTML=costAuto2;
 		}
 		function autoAdd()
 		{
@@ -193,6 +227,48 @@
 		{
 			display: block;
 		}
+		#autoDown2
+		{
+			display: none;
+			position: absolute;
+			background-color: #f9f9f9;
+			box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+			padding: 5px 7px;
+		}
+		#auto2
+		{}
+		#auto2:hover #autoDown2
+		{
+			display: block;
+		}
+		#autoDown3
+		{
+			display: none;
+			position: absolute;
+			background-color: #f9f9f9;
+			box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+			padding: 5px 7px;
+		}
+		#auto3
+		{}
+		#auto3:hover #autoDown3
+		{
+			display: block;
+		}
+		#autoDown4
+		{
+			display: none;
+			position: absolute;
+			background-color: #f9f9f9;
+			box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+			padding: 5px 7px;
+		}
+		#auto4
+		{}
+		#auto4:hover #autoDown4
+		{
+			display: block;
+		}
 	</style>
 </head>
 
@@ -248,6 +324,29 @@
 			<div id="autoDown">
 				<span>need</span>
 				<span id="costAuto">100</span>
+			</div>
+		</div>
+		<div id="auto2">
+			<button class="button" onclick="auto2()">+10/s</button>
+			<div id="autoDown2">
+				<span>need</span>
+				<span id="costAuto2">1000</span>
+			</div>
+		</div>
+		<div id="auto3">
+			<button class="button" onclick="auto3()">+100/s</button>
+			<div id="autoDown3">
+				<span>need</span>
+				<span id="costAuto3">10000</span>
+				<br/>
+				<span>more inexpensive</span>
+			</div>
+		</div>
+		<div id="auto4">
+			<button class="button" onclick="auto4()">+(*2)/s</button>
+			<div id="autoDown4">
+				<span>need</span>
+				<span id="costAuto4">1000</span>
 			</div>
 		</div>
 	</div>
