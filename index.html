@@ -15,6 +15,7 @@
 		var addsum=0;
 		var cost=0;
 		var cost2=0;
+		var cost3=10000;
 		function add()
 		{
 			sum+=addsum;
@@ -36,7 +37,17 @@
 			{
 				sum-=cost2;
 				addsum*=2;
-				cost2+=addsum*addsum;
+				cost2+=addsum*Math.floor(Math.sqrt(addsum));
+				updata();
+			}
+		}
+		function up3()
+		{
+			if(sum>=cost3)
+			{
+				sum-=cost3;
+				addsum*=addsum;
+				cost3+=addsum*addsum;
 				updata();
 			}
 		}
@@ -46,6 +57,7 @@
 			document.getElementById("add").innerHTML="+"+addsum;
 			document.getElementById("cost").innerHTML=cost;
 			document.getElementById("cost2").innerHTML=cost2;
+			document.getElementById("cost3").innerHTML=cost3;
 		}
 	</script>
 	<style>
@@ -132,6 +144,20 @@
 		{
 			display: block;
 		}
+		#upDown3
+		{
+			display: none;
+			position: absolute;
+			background-color: #f9f9f9;
+			box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+			padding: 5px 7px;
+		}
+		#up3
+		{}
+		#up3:hover #upDown3
+		{
+			display: block;
+		}
 	</style>
 </head>
 
@@ -170,6 +196,13 @@
 			<div id="upDown2">
 				<span>need</span>
 				<span id="cost2">0</span>
+			</div>
+		</div>
+		<div id="up3">
+			<button class="button" onclick="up3()">^2</button>
+			<div id="upDown3">
+				<span>need</span>
+				<span id="cost3">10000</span>
 			</div>
 		</div>
 	</div>
